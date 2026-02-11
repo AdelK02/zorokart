@@ -1107,13 +1107,15 @@ html {
   .step-image {
     order: -1;
     /* Image on top for Step 1 on mobile */
-    height: 200px;
+    height: 160px;
     width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
   .step-image img {
-    width: auto;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: contain;
   }
 }
@@ -1310,15 +1312,37 @@ html {
     margin-bottom: 1.5rem;
   }
 
+  .contact-info {
+    text-align: left;
+    width: 100%;
+  }
+
   .contact-info h3,
   .social-links h3 {
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .contact-info ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .contact-info ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
     font-size: 0.85rem;
+    display: flex;
+    align-items: flex-start;
+    /* Align icon with first line of text */
+    text-align: left;
+    gap: 0.75rem;
+  }
+
+  .contact-info ul li svg {
+    margin-top: 3px;
+    /* Subtle offset for better alignment with text line */
   }
 
   .social-icons {
