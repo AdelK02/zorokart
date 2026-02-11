@@ -78,6 +78,7 @@
 
 import "./globals.css";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 import WhatsappFloat from "./WhatsappFloat";
@@ -89,17 +90,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const currentYear = new Date().getFullYear();
-
   return (
     <html lang="en">
       <body>
         <Navbar />
         {children}
         <WhatsappFloat />
-        <footer>
-          <p>&copy; {currentYear} zorokart. Built with 💕.</p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

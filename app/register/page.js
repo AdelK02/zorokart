@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 export default function Register() {
@@ -13,6 +13,23 @@ export default function Register() {
         video: null,
         paymentDone: false,
     });
+    const [isMobile, setIsMobile] = useState(false);
+
+    const upiId = "zorokartindia2@fbl";
+    const upiName = "Akshayavahini";
+    const amount = 999;
+
+    const upiLink = `upi://pay?pa=${upiId}&pn=${upiName}&am=${amount}&cu=INR&tn=Zorokart Registration`;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
+
+    useEffect(() => {
+        setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+    }, []);
+
+    const copyUpiId = () => {
+        navigator.clipboard.writeText(upiId);
+        alert("UPI ID copied to clipboard");
+    };
 
     const [errors, setErrors] = useState({
         email: "",
@@ -163,7 +180,7 @@ export default function Register() {
         <main>
             <header style={{ marginBottom: "2rem" }}>
                 <h1>Create Account</h1>
-                <p>Join the zorokart community and start your journey with us.</p>
+                <p>Join the Akshayavahini community and start your journey with us.</p>
             </header>
 
             <form onSubmit={handleSubmit}>
@@ -208,6 +225,25 @@ export default function Register() {
                 <div>
                     <label htmlFor="video">Introduction Video</label>
                     <input id="video" type="file" name="video" accept="video/*" onChange={handleChange} disabled={loading} ref={fileInputRef} />
+                </div>
+                <div>
+                    {!isMobile && (
+                        <>
+                            <img src={qrUrl} alt="UPI QR Code" className="qr-image" />
+                            <p>Scan using Google Pay / PhonePe or any other UPI app</p>
+                            <p>UPI ID: {upiId}</p>
+
+                            <button onClick={copyUpiId} className="copy-btn">
+                                Copy UPI ID
+                            </button>
+                        </>
+                    )}
+
+                    {isMobile && (
+                        <a href={upiLink} className="upi-button">
+                            Pay ₹{amount} via UPI App
+                        </a>
+                    )}
                 </div>
 
                 <div style={{ flexDirection: "row", alignItems: "center", gap: "0.75rem", padding: "0.5rem 0" }}>

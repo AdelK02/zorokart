@@ -1,9 +1,0 @@
-const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/register`, {
-
-
-const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/login`, {
-
-
-fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/users`, {
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/users/${userId}`,
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/users/${user._id}/payment`,
